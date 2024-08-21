@@ -1,4 +1,4 @@
-version: 3
+version: "3"
 services:
   app:
     build: .
@@ -20,4 +20,6 @@ services:
       - POSTGRES_DB=todolist
     volumes:
       - postgres_data:/var/lib/postgresql/data
-volumes: postgres_data
+
+volumes:
+  postgres_data:
