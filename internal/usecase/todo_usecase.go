@@ -14,7 +14,7 @@ func (uc *todoUsecase) GetAll() ([]domain.Todo, error) {
 	return uc.repo.GetAll()
 }
 
-func (uc *todoUsecase) GetById(id string) (*domain.Todo, error) {
+func (uc *todoUsecase) GetById(id uint) (*domain.Todo, error) {
 	return uc.repo.GetById(id)
 }
 

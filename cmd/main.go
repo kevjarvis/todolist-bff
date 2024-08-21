@@ -7,6 +7,7 @@ import (
 	"bff-todolist/internal/repository"
 	"bff-todolist/internal/usecase"
 	"bff-todolist/pkg/config"
+	"bff-todolist/pkg/database"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,7 +15,12 @@ import (
 func main() {
 	cfg := config.NewConfig()
 
-	repo := repository.NewTodoRepository()
+	db, err := database.NewGormDB(cfg)
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
+
+	repo := repository.NewGormTodoRepository(db)
 	uc := usecase.NewTodoUsecase(repo)
 	handler := http.NewTodoHandler(uc)
 
