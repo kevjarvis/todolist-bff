@@ -4,9 +4,9 @@ import "gorm.io/gorm"
 
 type Todo struct {
 	gorm.Model
-	Name        string
-	Description string
-	Completed   bool
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Completed   bool   `json:"completed"`
 }
 
 type TodoRepository interface {
